@@ -4,8 +4,11 @@ import com.challenge.invoice.model.Boleto;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface BoletoRepository extends CrudRepository<Boleto, Long> {
 
-    Iterable<Boleto> findAllByClienteId(String clienteId);
+    Optional<List<Boleto>> findAllByClienteId(String clienteId);
 }

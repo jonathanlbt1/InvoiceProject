@@ -3,10 +3,12 @@ package com.challenge.invoice.service;
 import com.challenge.invoice.model.Boleto;
 import com.challenge.invoice.model.Status;
 import com.challenge.invoice.repository.BoletoRepository;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
-
+@Service
 public class BoletoServiceImpl implements BoletoService {
 
     private final BoletoRepository boletoRepository;
@@ -16,7 +18,16 @@ public class BoletoServiceImpl implements BoletoService {
     }
 
     @Override
-    public Iterable<Boleto> getAllbyClienteId(String clienteId) {
+    public Boleto save(Boleto boleto) {
+        if (boleto != null) {
+            return boletoRepository.save(boleto);
+        } else {
+            throw new RuntimeException("Boleto não pode ser nulo");
+        }
+    }
+
+    @Override
+    public Optional<List<Boleto>> getAllbyClienteId(String clienteId) {
         if (clienteId == null) {
             throw new RuntimeException("Id do cliente não pode ser nulo");
         } else {
