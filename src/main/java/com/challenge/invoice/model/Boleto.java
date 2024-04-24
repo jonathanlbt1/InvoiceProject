@@ -2,6 +2,7 @@ package com.challenge.invoice.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 @Entity
@@ -9,16 +10,24 @@ public class Boleto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "cliente_id")
     private String clienteId;
+    @Column(name = "valor")
     private Double valor;
+    @Column(name = "valor_pago")
     private Double valorPago;
+    @Column(name = "data_vencimento")
     private Date dataVencimento;
+    @Column(name = "data_pagamento")
     private Date dataPagamento;
-    private Status status;
+    @Column(name = "status")
+    private String status;
 
     public Boleto(Long id, String clienteId, Double valor, Double valorPago, Date dataVencimento, Date dataPagamento,
-                  Status status) {
+                  String status) {
         this.id = id;
         this.clienteId = clienteId;
         this.valor = valor;
@@ -80,11 +89,11 @@ public class Boleto {
         this.dataPagamento = dataPagamento;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

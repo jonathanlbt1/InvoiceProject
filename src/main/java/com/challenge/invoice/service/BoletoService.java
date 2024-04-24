@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface BoletoService {
 
-    Boleto save(Boleto boleto);
+    String createBoleto(Boleto boleto);
     Optional<List<Boleto>> getAllbyClienteId(String clienteId);
     Optional<Boleto> getById(Long id);
     void payBoleto(Long id, Double valorPago);

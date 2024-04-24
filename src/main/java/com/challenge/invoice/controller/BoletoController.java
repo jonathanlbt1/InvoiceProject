@@ -1,8 +1,8 @@
 package com.challenge.invoice.controller;
 
 import com.challenge.invoice.model.Boleto;
-import com.challenge.invoice.service.BoletoService;
 import com.challenge.invoice.service.BoletoServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +18,7 @@ public class BoletoController {
 
     private final BoletoServiceImpl boletoService;
 
+    @Autowired
     public BoletoController(BoletoServiceImpl boletoService) {
         this.boletoService = boletoService;
     }
@@ -36,6 +37,11 @@ public class BoletoController {
     public ResponseEntity<Void> payBoleto(@PathVariable Long id, @RequestParam Double valorPago) {
         boletoService.payBoleto(id, valorPago);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping()
+    public ResponseEntity<String> createBoleto(@RequestBody Boleto boleto) {
+        return ResponseEntity.ok(boletoService.createBoleto(boleto));
     }
 
     @DeleteMapping("/{id}")

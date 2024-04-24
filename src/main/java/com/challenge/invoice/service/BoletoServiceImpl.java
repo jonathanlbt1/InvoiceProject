@@ -5,22 +5,34 @@ import com.challenge.invoice.model.Status;
 import com.challenge.invoice.repository.BoletoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
 public class BoletoServiceImpl implements BoletoService {
 
     private final BoletoRepository boletoRepository;
+    private final String BOLETO_SALVO = "Boleto salvo com sucesso";
 
     public BoletoServiceImpl(BoletoRepository boletoRepository) {
         this.boletoRepository = boletoRepository;
     }
 
     @Override
-    public Boleto save(Boleto boleto) {
-        if (boleto != null) {
-            return boletoRepository.save(boleto);
+    public String createBoleto(Boleto boleto) {
+        if (Objects.nonNull(boleto)){
+            var newBoleto = new Boleto();
+//            newBoleto.setId(boleto.getId());
+            newBoleto.setClienteId(boleto.getClienteId());
+            newBoleto.setValor(boleto.getValor());
+            newBoleto.setValorPago(boleto.getValorPago());
+            newBoleto.setDataVencimento(boleto.getDataVencimento());
+            newBoleto.setDataPagamento(boleto.getDataPagamento());
+            newBoleto.setStatus(boleto.getStatus());
+            boletoRepository.save(newBoleto);
+            return BOLETO_SALVO;
         } else {
             throw new RuntimeException("Boleto não pode ser nulo");
         }
@@ -52,7 +64,8 @@ public class BoletoServiceImpl implements BoletoService {
         if (boleto.isPresent()) {
             Boleto boleto1 = boleto.get();
             boleto1.setValorPago(valorPago);
-            boleto1.setStatus(Status.PAGO);
+            boleto1.setDataPagamento(Date.from(new Date().toInstant()));
+            boleto1.setStatus(Status.PAGO.getValue());
             boletoRepository.save(boleto1);
         } else {
             throw new RuntimeException("Boleto não encontrado");
