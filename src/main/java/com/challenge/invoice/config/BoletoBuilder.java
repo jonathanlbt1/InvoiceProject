@@ -31,7 +31,7 @@ public class BoletoBuilder {
         boleto1.setValorPago(100.00);
         boleto1.setDataVencimento(Date.valueOf("2024-01-10"));
         boleto1.setDataPagamento(Date.valueOf("2024-01-10"));
-        boleto1.setStatus(Status.PAGO.getValue());
+        boleto1.setStatus(Status.PAGO);
         boletos.add(boleto1);
 
         var boleto2 = new Boleto();
@@ -40,7 +40,7 @@ public class BoletoBuilder {
         boleto2.setValorPago(127.00);
         boleto2.setDataVencimento(Date.valueOf("2024-03-10"));
         boleto2.setDataPagamento(Date.valueOf("2024-03-15"));
-        boleto2.setStatus(Status.PAGO.getValue());
+        boleto2.setStatus(Status.PAGO);
         boletos.add(boleto2);
 
         var boleto3 = new Boleto();
@@ -49,7 +49,7 @@ public class BoletoBuilder {
         boleto3.setValorPago(150.50);
         boleto3.setDataVencimento(Date.valueOf("2024-02-15"));
         boleto3.setDataPagamento(Date.valueOf("2024-02-15"));
-        boleto3.setStatus(Status.PAGO.getValue());
+        boleto3.setStatus(Status.PAGO);
         boletos.add(boleto3);
 
         var boleto4 = new Boleto();
@@ -57,7 +57,7 @@ public class BoletoBuilder {
         boleto4.setValor(225.00);
         boleto4.setValorPago(0.00);
         boleto4.setDataVencimento(Date.valueOf("2024-04-25"));
-        boleto4.setStatus(Status.PENDENTE.getValue());
+        boleto4.setStatus(Status.PENDENTE);
         boletos.add(boleto4);
 
         var boleto5 = new Boleto();
@@ -65,7 +65,7 @@ public class BoletoBuilder {
         boleto5.setValor(75.30);
         boleto5.setValorPago(0.00);
         boleto5.setDataVencimento(Date.valueOf("2024-04-20"));
-        boleto5.setStatus(Status.VENCIDO.getValue());
+        boleto5.setStatus(Status.VENCIDO);
         boletos.add(boleto5);
 
         var boleto6 = new Boleto();
@@ -73,8 +73,25 @@ public class BoletoBuilder {
         boleto6.setValor(625.00);
         boleto6.setValorPago(0.00);
         boleto6.setDataVencimento(Date.valueOf("2024-04-20"));
-        boleto6.setStatus(Status.VENCIDO.getValue());
+        boleto6.setStatus(Status.VENCIDO);
         boletos.add(boleto6);
+
+
+        var boleto7 = new Boleto();
+        boleto7.setClienteId("702.146.910-81");
+        boleto7.setValor(175.20);
+        boleto7.setValorPago(0.00);
+        boleto7.setDataVencimento(Date.valueOf("2024-04-20"));
+        boleto7.setStatus(Status.VENCIDO);
+        boletos.add(boleto7);
+
+        var boleto8 = new Boleto();
+        boleto8.setClienteId("702.146.910-81");
+        boleto8.setValor(299.30);
+        boleto8.setValorPago(0.00);
+        boleto8.setDataVencimento(Date.valueOf("2024-04-20"));
+        boleto8.setStatus(Status.VENCIDO);
+        boletos.add(boleto8);
 
         boletos.forEach(boletoService::createBoleto);
     }

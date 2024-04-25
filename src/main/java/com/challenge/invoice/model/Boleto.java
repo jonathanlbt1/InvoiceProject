@@ -2,7 +2,6 @@ package com.challenge.invoice.model;
 
 import jakarta.persistence.*;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 @Entity
@@ -24,10 +23,11 @@ public class Boleto {
     @Column(name = "data_pagamento")
     private Date dataPagamento;
     @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     public Boleto(Long id, String clienteId, Double valor, Double valorPago, Date dataVencimento, Date dataPagamento,
-                  String status) {
+                  Status status) {
         this.id = id;
         this.clienteId = clienteId;
         this.valor = valor;
@@ -89,11 +89,11 @@ public class Boleto {
         this.dataPagamento = dataPagamento;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }

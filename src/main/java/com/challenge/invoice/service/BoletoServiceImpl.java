@@ -24,7 +24,6 @@ public class BoletoServiceImpl implements BoletoService {
     public String createBoleto(Boleto boleto) {
         if (Objects.nonNull(boleto)){
             var newBoleto = new Boleto();
-//            newBoleto.setId(boleto.getId());
             newBoleto.setClienteId(boleto.getClienteId());
             newBoleto.setValor(boleto.getValor());
             newBoleto.setValorPago(boleto.getValorPago());
@@ -65,7 +64,7 @@ public class BoletoServiceImpl implements BoletoService {
             Boleto boleto1 = boleto.get();
             boleto1.setValorPago(valorPago);
             boleto1.setDataPagamento(Date.from(new Date().toInstant()));
-            boleto1.setStatus(Status.PAGO.getValue());
+            boleto1.setStatus(Status.PAGO);
             boletoRepository.save(boleto1);
         } else {
             throw new RuntimeException("Boleto não encontrado");
