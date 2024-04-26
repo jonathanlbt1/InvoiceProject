@@ -1,4 +1,4 @@
-package com.challenge.invoice.model;
+package com.challenge.invoice.entity;
 
 import jakarta.persistence.*;
 
@@ -14,21 +14,25 @@ public class Boleto {
 
     @Column(name = "cliente_id")
     private String clienteId;
+
     @Column(name = "valor")
     private Double valor;
+
     @Column(name = "valor_pago")
     private Double valorPago;
+
     @Column(name = "data_vencimento")
     private Date dataVencimento;
+
     @Column(name = "data_pagamento")
     private Date dataPagamento;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    public Boleto(Long id, String clienteId, Double valor, Double valorPago, Date dataVencimento, Date dataPagamento,
+    public Boleto(String clienteId, Double valor, Double valorPago, Date dataVencimento, Date dataPagamento,
                   Status status) {
-        this.id = id;
         this.clienteId = clienteId;
         this.valor = valor;
         this.valorPago = valorPago;
@@ -43,10 +47,6 @@ public class Boleto {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getClienteId() {

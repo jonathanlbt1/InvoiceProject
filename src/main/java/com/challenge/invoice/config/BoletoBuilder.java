@@ -1,7 +1,7 @@
 package com.challenge.invoice.config;
 
-import com.challenge.invoice.model.Boleto;
-import com.challenge.invoice.model.Status;
+import com.challenge.invoice.entity.Boleto;
+import com.challenge.invoice.entity.Status;
 import com.challenge.invoice.service.BoletoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -92,6 +92,38 @@ public class BoletoBuilder {
         boleto8.setDataVencimento(Date.valueOf("2024-04-20"));
         boleto8.setStatus(Status.VENCIDO);
         boletos.add(boleto8);
+
+        var boleto9 = new Boleto();
+        boleto9.setClienteId("103.624.587-33");
+        boleto9.setValor(499.58);
+        boleto9.setValorPago(0.00);
+        boleto9.setDataVencimento(Date.valueOf("2024-04-20"));
+        boleto9.setStatus(Status.VENCIDO);
+        boletos.add(boleto9);
+
+        var boleto10 = new Boleto();
+        boleto10.setClienteId("841.927.605-15");
+        boleto10.setValor(699.58);
+        boleto10.setValorPago(0.00);
+        boleto10.setDataVencimento(Date.valueOf("2024-04-20"));
+        boleto10.setStatus(Status.VENCIDO);
+        boletos.add(boleto10);
+
+        var boleto11 = new Boleto();
+        boleto11.setClienteId("216.537.894-60");
+        boleto11.setValor(199.58);
+        boleto11.setValorPago(0.00);
+        boleto11.setDataVencimento(Date.valueOf("2024-04-20"));
+        boleto11.setStatus(Status.VENCIDO);
+        boletos.add(boleto11);
+
+        var boleto12 = new Boleto();
+        boleto12.setClienteId("375.682.019-07");
+        boleto12.setValor(799.58);
+        boleto12.setValorPago(0.00);
+        boleto12.setDataVencimento(Date.valueOf("2024-04-20"));
+        boleto12.setStatus(Status.VENCIDO);
+        boletos.add(boleto12);
 
         boletos.forEach(boletoService::createBoleto);
     }

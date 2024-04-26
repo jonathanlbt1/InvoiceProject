@@ -1,4 +1,4 @@
-package com.challenge.invoice.model;
+package com.challenge.invoice.entity;
 
 public enum Status {
     PAGO("PAGO"),
