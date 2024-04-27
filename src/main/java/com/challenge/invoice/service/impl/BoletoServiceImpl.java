@@ -37,12 +37,8 @@ public class BoletoServiceImpl implements BoletoService {
     @Override
     public List<Boleto> getAllbyClienteId(String clienteId) {
 
-        var boletos = boletoRepository.findAllByClienteId(clienteId);
-        if (!boletos.isEmpty()) {
-            return boletos;
-        } else {
-            throw new RuntimeException("Não há boletos emitidos para este cliente");
-        }
+        return boletoRepository.findAllByClienteId(clienteId);
+
     }
 
     @Override
